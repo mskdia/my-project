@@ -1,0 +1,1416 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="문동규 (dong gue) - 공공기관 40년 경력의 청렴·감사 전문가, AI 입문 교육강사, 작가 & 개발자" />
+  <title>문동규 (dong gue) | 청렴·AI 교육 전문가 &amp; 작가</title>
+
+  <!-- 깔끔한 한국어 가독성을 위한 시스템 및 웹폰트 스타일링 (외부 라이브러리 없음) -->
+  <style>
+    /* ==========================================================================
+       1. 디자인 토큰 & CSS 변수 (라이트 / 다크 모드 지원)
+       ========================================================================== */
+    :root {
+      /* 라이트 모드 팔레트: 차분하고 신뢰감 있는 오프화이트 + 딥 네이비 + 웜 골드 */
+      --bg-primary: #f8f9fb;
+      --bg-secondary: #ffffff;
+      --bg-tertiary: #eef1f6;
+      --text-primary: #162238;
+      --text-secondary: #475569;
+      --text-muted: #64748b;
+      --accent-navy: #1e3a5f;
+      --accent-navy-hover: #142842;
+      --accent-gold: #b47b2b;
+      --accent-gold-soft: rgba(180, 123, 43, 0.12);
+      --border-color: #e2e8f0;
+      --shadow-sm: 0 2px 8px rgba(22, 34, 56, 0.05);
+      --shadow-md: 0 10px 25px rgba(22, 34, 56, 0.08);
+      --shadow-lg: 0 20px 40px rgba(22, 34, 56, 0.12);
+      --header-bg: rgba(248, 249, 251, 0.88);
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --transition: all 0.28s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    [data-theme="dark"] {
+      /* 다크 모드 팔레트: 눈이 편안한 딥 슬레이트 + 부드러운 앰버 골드 */
+      --bg-primary: #0f172a;
+      --bg-secondary: #1e293b;
+      --bg-tertiary: #283548;
+      --text-primary: #f1f5f9;
+      --text-secondary: #cbd5e1;
+      --text-muted: #94a3b8;
+      --accent-navy: #60a5fa;
+      --accent-navy-hover: #93c5fd;
+      --accent-gold: #eab308;
+      --accent-gold-soft: rgba(234, 179, 8, 0.14);
+      --border-color: #334155;
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.25);
+      --shadow-md: 0 10px 25px rgba(0, 0, 0, 0.35);
+      --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.45);
+      --header-bg: rgba(15, 23, 42, 0.88);
+    }
+
+    /* ==========================================================================
+       2. 기본 리셋 및 타이포그래피
+       ========================================================================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.7;
+      word-break: keep-all;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ==========================================================================
+       3. 상단 내비게이션 바 (Header)
+       ========================================================================== */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background-color: var(--header-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+      transition: var(--transition);
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--text-primary);
+    }
+
+    .brand-handle {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--accent-gold);
+      letter-spacing: 0.02em;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .nav-link {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      position: relative;
+      padding: 6px 2px;
+      transition: color 0.2s ease;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--accent-gold);
+      transition: width 0.25s ease;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--text-primary);
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .theme-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: var(--bg-tertiary);
+      color: var(--text-primary);
+      border: 1px solid var(--border-color);
+      transition: var(--transition);
+    }
+
+    .theme-toggle:hover {
+      border-color: var(--accent-gold);
+      transform: translateY(-1px);
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-sm);
+      background-color: var(--bg-tertiary);
+      color: var(--text-primary);
+      border: 1px solid var(--border-color);
+    }
+
+    /* ==========================================================================
+       4. 히어로 섹션 (Hero / 소개)
+       ========================================================================== */
+    .hero {
+      padding: 88px 0 76px;
+      position: relative;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.35fr 0.85fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background-color: var(--accent-gold-soft);
+      color: var(--accent-gold);
+      font-size: 0.86rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .hero-title {
+      font-size: clamp(2.1rem, 4vw, 2.9rem);
+      font-weight: 800;
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+      margin-bottom: 14px;
+      color: var(--text-primary);
+    }
+
+    .hero-title span {
+      font-weight: 500;
+      font-size: 0.58em;
+      color: var(--text-muted);
+      margin-left: 8px;
+    }
+
+    .hero-subtitle {
+      font-size: 1.12rem;
+      font-weight: 600;
+      color: var(--accent-navy);
+      margin-bottom: 22px;
+      line-height: 1.5;
+    }
+
+    .hero-desc {
+      font-size: 1.02rem;
+      color: var(--text-secondary);
+      margin-bottom: 32px;
+      max-width: 620px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px 24px;
+      border-radius: var(--radius-sm);
+      font-size: 0.96rem;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+
+    .btn-primary {
+      background-color: var(--accent-navy);
+      color: #ffffff;
+      box-shadow: var(--shadow-sm);
+    }
+
+    [data-theme="dark"] .btn-primary {
+      color: #0f172a;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--accent-navy-hover);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn-outline {
+      background-color: var(--bg-secondary);
+      color: var(--text-primary);
+      border: 1px solid var(--border-color);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent-gold);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* 프로필 요약 카드 (우측) */
+    .profile-card {
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 32px 28px;
+      box-shadow: var(--shadow-md);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .profile-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, var(--accent-navy), var(--accent-gold));
+    }
+
+    .profile-monogram {
+      width: 68px;
+      height: 68px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, var(--accent-navy), #2c5282);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 18px;
+      letter-spacing: 0.04em;
+    }
+
+    [data-theme="dark"] .profile-monogram {
+      color: #0f172a;
+      background: linear-gradient(135deg, #60a5fa, #eab308);
+    }
+
+    .profile-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 6px;
+    }
+
+    .profile-location {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .profile-highlights {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .profile-highlights li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+    }
+
+    .highlight-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background-color: var(--accent-gold);
+      margin-top: 8px;
+      flex-shrink: 0;
+    }
+
+    /* ==========================================================================
+       5. 공통 섹션 헤더 스타일
+       ========================================================================== */
+    .section {
+      padding: 80px 0;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .section-header {
+      margin-bottom: 40px;
+    }
+
+    .section-eyebrow {
+      display: inline-block;
+      font-size: 0.84rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent-gold);
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-size: clamp(1.65rem, 3vw, 2.1rem);
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 10px;
+    }
+
+    .section-subtitle {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      max-width: 640px;
+    }
+
+    /* ==========================================================================
+       6. 주요 활동 및 전문 분야 (인터랙티브 필터 탭 + 카드 그리드)
+       ========================================================================== */
+    .filter-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 32px;
+    }
+
+    .filter-btn {
+      padding: 9px 18px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      background-color: var(--bg-secondary);
+      color: var(--text-secondary);
+      border: 1px solid var(--border-color);
+      transition: var(--transition);
+    }
+
+    .filter-btn:hover {
+      border-color: var(--accent-navy);
+      color: var(--text-primary);
+    }
+
+    .filter-btn.active {
+      background-color: var(--accent-navy);
+      color: #ffffff;
+      border-color: var(--accent-navy);
+    }
+
+    [data-theme="dark"] .filter-btn.active {
+      color: #0f172a;
+    }
+
+    .expertise-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .expertise-card {
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 30px;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .expertise-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--accent-gold);
+    }
+
+    .expertise-card.hidden {
+      display: none;
+    }
+
+    .card-icon-wrap {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background-color: var(--accent-gold-soft);
+      color: var(--accent-gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+    }
+
+    .card-category {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--accent-gold);
+      margin-bottom: 6px;
+    }
+
+    .card-title {
+      font-size: 1.24rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+      color: var(--text-primary);
+    }
+
+    .card-list {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+
+    .card-list li {
+      position: relative;
+      padding-left: 16px;
+    }
+
+    .card-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--accent-navy);
+      font-weight: bold;
+    }
+
+    /* ==========================================================================
+       7. 주요 저서 및 프로젝트 (Books & Projects)
+       ========================================================================== */
+    .works-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+
+    .works-column-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: var(--text-primary);
+    }
+
+    .work-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .work-card {
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 26px;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+    }
+
+    .work-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .status-badge {
+      display: inline-block;
+      padding: 4px 11px;
+      border-radius: 6px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .badge-published {
+      background-color: rgba(22, 163, 74, 0.12);
+      color: #15803d;
+    }
+
+    [data-theme="dark"] .badge-published {
+      background-color: rgba(74, 222, 128, 0.15);
+      color: #4ade80;
+    }
+
+    .badge-writing {
+      background-color: var(--accent-gold-soft);
+      color: var(--accent-gold);
+    }
+
+    .badge-dev {
+      background-color: rgba(30, 58, 95, 0.1);
+      color: var(--accent-navy);
+    }
+
+    [data-theme="dark"] .badge-dev {
+      background-color: rgba(96, 165, 250, 0.15);
+      color: #60a5fa;
+    }
+
+    .work-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--text-primary);
+    }
+
+    .work-desc {
+      font-size: 0.94rem;
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+    }
+
+    .work-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      font-size: 0.8rem;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background-color: var(--bg-tertiary);
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    .work-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 14px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--accent-navy);
+    }
+
+    .work-link:hover {
+      text-decoration: underline;
+    }
+
+    /* ==========================================================================
+       8. 연락처 및 링크 (Contact)
+       ========================================================================== */
+    .contact-box {
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 42px;
+      box-shadow: var(--shadow-md);
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .contact-info h3 {
+      font-size: 1.45rem;
+      margin-bottom: 12px;
+    }
+
+    .contact-info p {
+      color: var(--text-secondary);
+      margin-bottom: 24px;
+      font-size: 0.98rem;
+    }
+
+    .contact-methods {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 18px;
+      border-radius: var(--radius-sm);
+      background-color: var(--bg-primary);
+      border: 1px solid var(--border-color);
+    }
+
+    .contact-item-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .contact-icon {
+      color: var(--accent-gold);
+      flex-shrink: 0;
+      display: flex;
+    }
+
+    .contact-label {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      display: block;
+    }
+
+    .contact-value {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      word-break: break-all;
+    }
+
+    .copy-btn {
+      padding: 7px 13px;
+      border-radius: 6px;
+      background-color: var(--accent-navy);
+      color: #ffffff;
+      font-size: 0.82rem;
+      font-weight: 600;
+      flex-shrink: 0;
+      transition: var(--transition);
+    }
+
+    [data-theme="dark"] .copy-btn {
+      color: #0f172a;
+    }
+
+    .copy-btn:hover {
+      background-color: var(--accent-navy-hover);
+    }
+
+    /* ==========================================================================
+       9. 푸터 & 토스트 알림
+       ========================================================================== */
+    .footer {
+      padding: 36px 0;
+      border-top: 1px solid var(--border-color);
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      background-color: var(--text-primary);
+      color: var(--bg-primary);
+      padding: 13px 22px;
+      border-radius: var(--radius-sm);
+      font-size: 0.92rem;
+      font-weight: 600;
+      box-shadow: var(--shadow-lg);
+      opacity: 0;
+      transform: translateY(16px);
+      pointer-events: none;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      z-index: 999;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ==========================================================================
+       10. 스크롤 등장 애니메이션 (Scroll Reveal)
+       ========================================================================== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ==========================================================================
+       11. 반응형 미디어 쿼리 (태블릿 & 모바일 최적화)
+       ========================================================================== */
+    @media (max-width: 900px) {
+      .hero-grid,
+      .works-layout,
+      .contact-box {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 56px 0 60px;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .expertise-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .mobile-menu-btn {
+        display: inline-flex;
+      }
+
+      .nav-menu {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background-color: var(--bg-secondary);
+        border-bottom: 1px solid var(--border-color);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 16px 24px 22px;
+        gap: 14px;
+        display: none;
+        box-shadow: var(--shadow-md);
+      }
+
+      .nav-menu.open {
+        display: flex;
+      }
+
+      .contact-box {
+        padding: 28px 20px;
+      }
+
+      .contact-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .copy-btn {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 상단 내비게이션 -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="#intro" class="brand">
+        문동규 <span class="brand-handle">@dong gue</span>
+      </a>
+
+      <nav class="nav-menu" id="navMenu" aria-label="주요 메뉴">
+        <a href="#intro" class="nav-link active">소개</a>
+        <a href="#expertise" class="nav-link">주요 활동</a>
+        <a href="#works" class="nav-link">저서 및 프로젝트</a>
+        <a href="#contact" class="nav-link">문의</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button type="button" class="theme-toggle" id="themeToggle" aria-label="다크 모드 전환" title="테마 전환">
+          <!-- 해/달 아이콘은 JS로 동적 전환 -->
+          <svg id="themeIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
+        <button type="button" class="mobile-menu-btn" id="mobileMenuBtn" aria-label="메뉴 열기" aria-expanded="false">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- 1. 히어로 / 소개 섹션 -->
+    <section id="intro" class="hero">
+      <div class="container hero-grid">
+        <div class="reveal">
+          <div class="hero-badge">
+            <span>청렴의 가치와 디지털 지성의 연결</span>
+          </div>
+          <h1 class="hero-title">
+            문동규 <span>(dong gue)</span>
+          </h1>
+          <p class="hero-subtitle">
+            공공기관 40년 경력의 청렴·감사 전문가 | AI 입문 교육강사 | 작가 &amp; 개발자
+          </p>
+          <p class="hero-desc">
+            40여 년간 공공행정과 감사·내부통제 현장에서 쌓아온 원칙과 신뢰의 경험을 바탕으로, 
+            이제는 평생학습과 시민 AI 교육, 인문학적 글쓰기, 그리고 실용 소프트웨어 개발을 통해 
+            세대와 기술을 잇는 새로운 배움의 여정을 이어가고 있습니다.
+          </p>
+          <div class="hero-buttons">
+            <a href="#expertise" class="btn btn-primary">주요 활동 살펴보기</a>
+            <a href="#contact" class="btn btn-outline">강의·협업 문의하기</a>
+          </div>
+        </div>
+
+        <aside class="profile-card reveal" aria-label="프로필 요약">
+          <div class="profile-monogram">DG</div>
+          <h3>문동규 (Moon Dong-gyu)</h3>
+          <div class="profile-location">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            <span>대한민국 대전광역시 (Daejeon, South Korea)</span>
+          </div>
+          <ul class="profile-highlights">
+            <li>
+              <span class="highlight-dot"></span>
+              <span>국민권익위원회 등록 청렴교육 전문강사</span>
+            </li>
+            <li>
+              <span class="highlight-dot"></span>
+              <span>청렴시민감사관 · 내부통제평가사 · 내부감사사</span>
+            </li>
+            <li>
+              <span class="highlight-dot"></span>
+              <span>평생교육원 · 시민대학 성인 및 시니어 AI 입문 강사</span>
+            </li>
+            <li>
+              <span class="highlight-dot"></span>
+              <span>공저 『왕초보! AI랑 놀자』 출간 및 집필·웹 개발 활동</span>
+            </li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <!-- 2. 주요 활동 및 전문 분야 섹션 -->
+    <section id="expertise" class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-eyebrow">Expertise &amp; Activities</span>
+          <h2 class="section-title">주요 활동 및 전문 분야</h2>
+          <p class="section-subtitle">
+            공직 윤리와 내부통제의 깊이 있는 전문성에 생성형 AI 활용 역량과 인문학적 통찰을 더합니다.
+          </p>
+        </div>
+
+        <!-- 카테고리 필터 탭 -->
+        <div class="filter-tabs reveal" role="tablist" aria-label="전문 분야 필터">
+          <button type="button" class="filter-btn active" data-filter="all">전체 보기</button>
+          <button type="button" class="filter-btn" data-filter="integrity">반부패·청렴 및 내부통제</button>
+          <button type="button" class="filter-btn" data-filter="education">시니어·성인 AI 교육</button>
+          <button type="button" class="filter-btn" data-filter="writing">집필 및 인문 탐구</button>
+          <button type="button" class="filter-btn" data-filter="dev">AI·데이터 및 웹 개발</button>
+        </div>
+
+        <!-- 분야별 카드 그리드 -->
+        <div class="expertise-grid" id="expertiseGrid">
+          <!-- 카드 1: 반부패·청렴 -->
+          <article class="expertise-card reveal" data-category="integrity">
+            <div>
+              <div class="card-icon-wrap">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                </svg>
+              </div>
+              <div class="card-category">Public Integrity &amp; Audit</div>
+              <h3 class="card-title">반부패·청렴 및 내부통제</h3>
+              <ul class="card-list">
+                <li>국민권익위원회 등록 청렴교육 전문강사 활동</li>
+                <li>청렴시민감사관으로서 공공행정 투명성 제고 및 자문</li>
+                <li>내부통제평가사·내부감사사 자격 기반 리스크 진단 및 감사</li>
+                <li>공공기관 40년 실무 경험을 반영한 현장 중심 청렴 특강</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- 카드 2: AI 입문 교육 -->
+          <article class="expertise-card reveal" data-category="education">
+            <div>
+              <div class="card-icon-wrap">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                  <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                </svg>
+              </div>
+              <div class="card-category">Lifelong AI Education</div>
+              <h3 class="card-title">시니어·성인 AI 입문 교육</h3>
+              <ul class="card-list">
+                <li>평생교육원 및 시민대학 성인·시니어 맞춤형 AI 활용 강의</li>
+                <li>일상생활·문서작성·정보탐색에 바로 쓰는 눈높이 실습 교육</li>
+                <li>『AI와 함께 배우는 사례·참여형 공직자 청렴교육』 커리큘럼 개발</li>
+                <li>디지털 격차 해소를 위한 쉽고 따뜻한 단계별 코칭</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- 카드 3: 집필 및 인문 탐구 -->
+          <article class="expertise-card reveal" data-category="writing">
+            <div>
+              <div class="card-icon-wrap">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
+                  <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
+                  <path d="M2 2l7.586 7.586"></path>
+                </svg>
+              </div>
+              <div class="card-category">Writing &amp; Humanities</div>
+              <h3 class="card-title">집필 및 인문 탐구</h3>
+              <ul class="card-list">
+                <li>삶의 궤적과 성찰을 담은 자전적 에세이 집필</li>
+                <li>1960년대 대전을 배경으로 한 동화 및 역사소설 창작</li>
+                <li>서양철학 및 심층심리학 탐구를 통한 인간 이해와 사유</li>
+                <li>실용 기술서와 인문 서사를 아우르는 폭넓은 글쓰기</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- 카드 4: AI·데이터 및 웹 개발 -->
+          <article class="expertise-card reveal" data-category="dev">
+            <div>
+              <div class="card-icon-wrap">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="16 18 22 12 16 6"></polyline>
+                  <polyline points="8 6 2 12 8 18"></polyline>
+                </svg>
+              </div>
+              <div class="card-category">Data &amp; Web Development</div>
+              <h3 class="card-title">AI·데이터 및 웹 개발</h3>
+              <ul class="card-list">
+                <li>Python 기반 거시경제 지표 및 금융 데이터 수집·분석</li>
+                <li>순수 HTML/CSS/JS를 활용한 경량 실용 웹 애플리케이션 제작</li>
+                <li>RAG(검색 증강 생성) 기반 금융·시장 심리 분석 대시보드 설계</li>
+                <li>GitHub Pages를 통한 교육 자료 및 오픈 웹 도구 배포</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. 주요 저서 및 프로젝트 섹션 -->
+    <section id="works" class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-eyebrow">Books &amp; Projects</span>
+          <h2 class="section-title">주요 저서 및 프로젝트</h2>
+          <p class="section-subtitle">
+            배움을 나누기 위해 펴낸 책과 직접 설계·구현한 소프트웨어 결과물입니다.
+          </p>
+        </div>
+
+        <div class="works-layout">
+          <!-- 좌측: 저서 -->
+          <div class="reveal">
+            <h3 class="works-column-title">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+              </svg>
+              저서 및 집필 활동
+            </h3>
+
+            <div class="work-stack">
+              <article class="work-card">
+                <span class="status-badge badge-published">공저 출간</span>
+                <h4 class="work-title">『왕초보! AI랑 놀자』</h4>
+                <p class="work-desc">
+                  디지털 환경이 낯선 시니어와 성인 학습자도 두려움 없이 생성형 AI를 이해하고 
+                  일상 속에서 즐겁게 활용할 수 있도록 안내하는 맞춤형 AI 입문서입니다.
+                </p>
+                <div class="work-tags">
+                  <span class="tag">#시니어AI입문</span>
+                  <span class="tag">#생성형AI활용</span>
+                  <span class="tag">#평생교육교재</span>
+                </div>
+              </article>
+
+              <article class="work-card">
+                <span class="status-badge badge-writing">집필 중</span>
+                <h4 class="work-title">『AI 인텔리전스로 구축하는 실전 주식 투자 전략 가이드』</h4>
+                <p class="work-desc">
+                  거시경제 흐름과 시장 데이터를 AI 도구로 체계적으로 분석하고, 
+                  감정에 흔들리지 않는 합리적 투자 의사결정 프레임을 구축하는 실전 안내서입니다.
+                </p>
+                <div class="work-tags">
+                  <span class="tag">#AI금융분석</span>
+                  <span class="tag">#거시경제인사이트</span>
+                  <span class="tag">#데이터기반투자</span>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <!-- 우측: 개발 프로젝트 -->
+          <div class="reveal">
+            <h3 class="works-column-title">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+              </svg>
+              주요 개발 프로젝트
+            </h3>
+
+            <div class="work-stack">
+              <article class="work-card">
+                <span class="status-badge badge-dev">Python &amp; AI 시스템</span>
+                <h4 class="work-title">RAG 기반 거시경제·시장 심리 분석 대시보드</h4>
+                <p class="work-desc">
+                  주요 경제 지표, 뉴스 데이터, 리서치 문서를 검색 증강 생성(RAG) 파이프라인으로 
+                  통합 분석하여 시장의 흐름과 투자 심리를 한눈에 파악할 수 있도록 설계한 분석 도구입니다.
+                </p>
+                <div class="work-tags">
+                  <span class="tag">#Python</span>
+                  <span class="tag">#RAG</span>
+                  <span class="tag">#거시경제대시보드</span>
+                </div>
+              </article>
+
+              <article class="work-card">
+                <span class="status-badge badge-dev">Web &amp; Open Source</span>
+                <h4 class="work-title">GitHub 정적 웹 애플리케이션 및 교육용 도구</h4>
+                <p class="work-desc">
+                  외부 의존성 없이 순수 HTML, CSS, JavaScript만으로 빠르게 동작하는 
+                  실용 웹 앱과 강의 보조 도구를 제작하여 GitHub에 기록하고 공유하고 있습니다.
+                </p>
+                <div class="work-tags">
+                  <span class="tag">#HTML5</span>
+                  <span class="tag">#CSS3</span>
+                  <span class="tag">#VanillaJS</span>
+                </div>
+                <a href="https://github.com/mskdia" target="_blank" rel="noopener noreferrer" class="work-link">
+                  GitHub 저장소 방문하기 (github.com/mskdia)
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                  </svg>
+                </a>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. 연락처 및 링크 섹션 -->
+    <section id="contact" class="section">
+      <div class="container">
+        <div class="contact-box reveal">
+          <div class="contact-info">
+            <span class="section-eyebrow">Contact &amp; Connect</span>
+            <h3>함께 배우고 나누는 소통을 환영합니다</h3>
+            <p>
+              공직자 청렴교육 및 내부통제 자문, 성인·시니어 AI 입문 특강, 집필 및 
+              프로젝트 협업에 관한 문의는 언제든 편하게 연락해 주세요.
+            </p>
+            <a href="mailto:mskdia@gmail.com" class="btn btn-primary">
+              이메일 바로 보내기
+            </a>
+          </div>
+
+          <div class="contact-methods">
+            <!-- 거주지 -->
+            <div class="contact-item">
+              <div class="contact-item-left">
+                <span class="contact-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                  </svg>
+                </span>
+                <div>
+                  <span class="contact-label">거주지 (Location)</span>
+                  <span class="contact-value">대한민국 대전광역시 (Daejeon, South Korea)</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 이메일 + 원클릭 복사 -->
+            <div class="contact-item">
+              <div class="contact-item-left">
+                <span class="contact-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                  </svg>
+                </span>
+                <div>
+                  <span class="contact-label">이메일 (E-mail)</span>
+                  <span class="contact-value" id="emailText">mskdia@gmail.com</span>
+                </div>
+              </div>
+              <button type="button" class="copy-btn" id="copyEmailBtn" aria-label="이메일 주소 복사">
+                주소 복사
+              </button>
+            </div>
+
+            <!-- GitHub -->
+            <div class="contact-item">
+              <div class="contact-item-left">
+                <span class="contact-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                  </svg>
+                </span>
+                <div>
+                  <span class="contact-label">GitHub</span>
+                  <a href="https://github.com/mskdia" target="_blank" rel="noopener noreferrer" class="contact-value">
+                    https://github.com/mskdia
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 푸터 -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; <span id="currentYear"></span> 문동규 (dong gue). All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- 토스트 메시지 박스 -->
+  <div class="toast" id="toastMessage" role="status" aria-live="polite"></div>
+
+  <!-- 순수 JavaScript (ES6+) 인터랙션 스크립트 -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // 1. 푸터 연도 자동 설정
+      const yearEl = document.getElementById("currentYear");
+      if (yearEl) {
+        yearEl.textContent = new Date().getFullYear();
+      }
+
+      // 2. 다크 모드 / 라이트 모드 토글 및 상태 저장
+      const htmlEl = document.documentElement;
+      const themeToggleBtn = document.getElementById("themeToggle");
+      const themeIcon = document.getElementById("themeIcon");
+
+      const sunIconSVG = `
+        <circle cx="12" cy="12" r="5"></circle>
+        <line x1="12" y1="1" x2="12" y2="3"></line>
+        <line x1="12" y1="21" x2="12" y2="23"></line>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+        <line x1="1" y1="12" x2="3" y2="12"></line>
+        <line x1="21" y1="12" x2="23" y2="12"></line>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+      `;
+      const moonIconSVG = `
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+      `;
+
+      function applyTheme(theme) {
+        htmlEl.setAttribute("data-theme", theme);
+        themeIcon.innerHTML = theme === "dark" ? sunIconSVG : moonIconSVG;
+        try {
+          localStorage.setItem("dg-theme", theme);
+        } catch (e) {
+          // 로컬 스토리지 접근 제한 환경 예외 처리
+        }
+      }
+
+      // 초기 테마 결정 (저장된 설정 또는 시스템 선호도)
+      let savedTheme = null;
+      try {
+        savedTheme = localStorage.getItem("dg-theme");
+      } catch (e) {}
+
+      if (savedTheme === "dark" || savedTheme === "light") {
+        applyTheme(savedTheme);
+      } else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        applyTheme("dark");
+      }
+
+      themeToggleBtn.addEventListener("click", () => {
+        const currentTheme = htmlEl.getAttribute("data-theme");
+        const nextTheme = currentTheme === "dark" ? "light" : "dark";
+        applyTheme(nextTheme);
+      });
+
+      // 3. 모바일 내비게이션 메뉴 토글
+      const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+      const navMenu = document.getElementById("navMenu");
+      const navLinks = document.querySelectorAll(".nav-link");
+
+      mobileMenuBtn.addEventListener("click", () => {
+        const isOpen = navMenu.classList.toggle("open");
+        mobileMenuBtn.setAttribute("aria-expanded", String(isOpen));
+      });
+
+      navLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          navMenu.classList.remove("open");
+          mobileMenuBtn.setAttribute("aria-expanded", "false");
+        });
+      });
+
+      // 4. 주요 활동 및 전문 분야 카테고리 필터링
+      const filterBtns = document.querySelectorAll(".filter-btn");
+      const expertiseCards = document.querySelectorAll(".expertise-card");
+
+      filterBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          // 활성 버튼 스타일 업데이트
+          filterBtns.forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+
+          const selectedCategory = btn.getAttribute("data-filter");
+
+          expertiseCards.forEach((card) => {
+            const cardCategory = card.getAttribute("data-category");
+            if (selectedCategory === "all" || selectedCategory === cardCategory) {
+              card.classList.remove("hidden");
+              card.classList.add("visible");
+            } else {
+              card.classList.add("hidden");
+            }
+          });
+        });
+      });
+
+      // 5. 이메일 원클릭 복사 및 토스트 알림
+      const copyEmailBtn = document.getElementById("copyEmailBtn");
+      const emailText = document.getElementById("emailText").textContent.trim();
+      const toastEl = document.getElementById("toastMessage");
+      let toastTimer = null;
+
+      function showToast(message) {
+        toastEl.textContent = message;
+        toastEl.classList.add("show");
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => {
+          toastEl.classList.remove("show");
+        }, 2800);
+      }
+
+      copyEmailBtn.addEventListener("click", () => {
+        // iFrame 및 구형 브라우저까지 안전하게 지원하는 클립보드 복사 로직
+        const tempInput = document.createElement("textarea");
+        tempInput.value = emailText;
+        tempInput.style.position = "fixed";
+        tempInput.style.opacity = "0";
+        document.body.appendChild(tempInput);
+        tempInput.select();
+
+        try {
+          const successful = document.execCommand("copy");
+          if (successful) {
+            showToast("이메일 주소(mskdia@gmail.com)가 복사되었습니다.");
+          } else if (navigator.clipboard) {
+            navigator.clipboard.writeText(emailText).then(() => {
+              showToast("이메일 주소(mskdia@gmail.com)가 복사되었습니다.");
+            });
+          }
+        } catch (err) {
+          showToast("복사에 실패했습니다. 직접 선택해 복사해 주세요.");
+        } finally {
+          document.body.removeChild(tempInput);
+        }
+      });
+
+      // 6. 스크롤 위치에 따른 내비게이션 활성화 및 요소 등장 애니메이션
+      const sections = document.querySelectorAll("section[id]");
+      const revealElements = document.querySelectorAll(".reveal");
+
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.12 }
+      );
+
+      revealElements.forEach((el) => revealObserver.observe(el));
+
+      window.addEventListener("scroll", () => {
+        const scrollPos = window.scrollY + 140;
+        sections.forEach((sec) => {
+          const top = sec.offsetTop;
+          const height = sec.offsetHeight;
+          const id = sec.getAttribute("id");
+
+          if (scrollPos >= top && scrollPos < top + height) {
+            navLinks.forEach((link) => {
+              link.classList.remove("active");
+              if (link.getAttribute("href") === `#${id}`) {
+                link.classList.add("active");
+              }
+            });
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
